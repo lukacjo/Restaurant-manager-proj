@@ -60,3 +60,9 @@ def log_in():
                 
 
     return render_template("login.html", user=current_user)
+
+@auth.route("/logout", methods=["GET", "POST"])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("views.log_in"))
