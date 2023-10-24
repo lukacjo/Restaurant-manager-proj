@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
+import json
 
 views = Blueprint("views", __name__)
 
@@ -23,7 +24,7 @@ def notes():
             flash('Title is too short!', category='error') 
         else:
             new_note = Note(data=note, user_id=current_user.id, title=title)  
-            db.session.add(new_note) # dodawanie notatki do bazydanych
+            db.session.add(new_note) # Dodawanie notatki do bazy danych
             db.session.commit()
             flash('Note added!', category='success')
             
@@ -37,3 +38,14 @@ def calc():
 @login_required
 def orders():
     return render_template("orders.html", user=current_user)
+
+@views.route('/delete-note', methods=['POST'])
+def delete_note():
+    note = json.loads(request.data)
+    noteId = note['noteId']
+    note = Note.query.get(noteId)
+    if note:
+        if note.user_id == current_user.id:
+            db.session.delete(note)
+            db.session.commit()
+    return jsonify({})
