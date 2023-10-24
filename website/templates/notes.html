@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="/static/css/notes.css" />
+<link rel="stylesheet" href="/static/css/my_forms.css" />
 <!--   nastepnym razem mona uyc modal z bootstrapa do notatek całkiem ładne rozwiązanie    --> 
 <div class="text-center">
   <h1 >Notes</h1>
@@ -13,13 +13,13 @@
       <h3>
         <input placeholder="Tytuł" name="title" id="title">
       </h3>
-        <textarea class="notearea" placeholder="Tu wpisz notatke" name="note" id="note"></textarea>
+        <textarea class="my_forms_area" placeholder="Tu wpisz notatke" name="note" id="note"></textarea>
         
     </div>
     <button type="submit" class="btn btn-primary">Add Note</button>
 </form>
   <br>
-  <div class="notatki">
+  <div class="my_forms_area">
     {% for note in user.notes %}
       <ul class="list-group" id="notes">
           <h3 >
