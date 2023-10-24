@@ -1,7 +1,9 @@
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
-
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(25))
@@ -16,3 +18,7 @@ class User(db.Model, UserMixin):
     firstname = db.Column(db.String(30))
     lastname = db.Column(db.String(30))
     notes = db.relationship('Note')
+    
+class SearchForm(FlaskForm):
+    searched = StringField("Searched", validators=[DataRequired()])
+    submit = SubmitField("Submit")
