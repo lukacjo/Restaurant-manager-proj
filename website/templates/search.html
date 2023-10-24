@@ -1,0 +1,48 @@
+{% extends "navbar.html" %}
+{% block title %}
+<title>Searched</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="text-center">
+<h2> You searched for</h2>
+<p>{{ searched }}</p>
+    <h2>Your results</h2>
+
+
+    
+        <ul class="list-group list-group-flush" id="notes">
+            {% for note in notes %}
+            <li class="list-group-item">{{ note.data }}
+                <div class="text-end">
+                    Delete<button type="button" class="btn-close" onClick="deleteNote({{ note.id}})">
+                    
+                    </button>
+                </div>
+        
+            </li>
+            
+            {% endfor %}
+        </ul>
+    </div>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        function deleteNote(noteId) {
+    fetch("/delete-note", {
+      method: "POST",
+      body: JSON.stringify({ noteId: noteId }),
+    }).then((_res) => {
+      window.location.href = "/notes";
+    });
+    }
+  </script>
+
+    
+{% endblock %}

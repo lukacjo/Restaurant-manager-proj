@@ -56,7 +56,13 @@
               </li>
               {% endif %}
             </ul>
-            
+            {% if user.is_authenticated %}
+            <form class="d-flex" role="search" method="POST" action="{{ url_for('views.search') }}">
+              {{ form.hidden_tag() }}
+              <input class="form-control me-2" type="search" placeholder="Search notes" aria-label="Search" name="searched">
+              <button class="btn btn-outline-warning" type="submit" >Search</button>
+            </form>
+            {% endif %}
           </div>
         </div>
       </nav>

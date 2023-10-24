@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note
+from .models import Note, SearchForm
 from . import db
 import json
 
@@ -49,3 +49,27 @@ def delete_note():
             db.session.delete(note)
             db.session.commit()
     return jsonify({})
+
+
+@views.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form)
+
+@views.route('/search', methods=['POST', 'GET'])
+def search():
+    form = SearchForm()
+    notes=Note.query
+    user=current_user
+    
+    if form.validate_on_submit():
+        searched = form.searched.data
+        notes = notes.filter(Note.data.like('%' + searched + '%'))
+        notes = notes.filter(Note.user_id==user.id)
+        notes = notes.order_by(Note.id).all()
+        
+        if len(searched) < 1:
+            flash('Search cant be empty', category='error')
+        else:
+            return render_template("search.html", form=form, searched=searched,user=user, notes=notes)
+        
