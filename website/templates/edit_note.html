@@ -1,0 +1,42 @@
+{% extends "navbar.html" %}
+{% block title %}
+<title>Edit Note</title>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/my_forms.css" />
+<!--   nastepnym razem mona uyc modal z bootstrapa do notatek całkiem ładne rozwiązanie    --> 
+<div class="text-center">
+  <h1 >Edit note</h1>
+  <form method="POST">
+    <div class="text-center">
+      <h3>
+        <input for="exampleFormControlInput1" name="title" id="title" value={{ note.title }}>
+      </h3>
+        <textarea class="my_forms_area" name="note" id="note">{{ note.data }}</textarea>
+        
+    </div>
+    <button type="submit" class="btn btn-success">Edit Note</button>
+    <button type="button" class="btn btn-danger" onClick="deleteNote({{ note.id}})">Delete</button>
+</form>
+  <br>
+
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+    function deleteNote(noteId) {
+        fetch("/delete-note", {
+            method: "POST",
+            body: JSON.stringify({ noteId: noteId }),
+        }).then((_res) => {
+            window.location.href = "/notes";
+        });
+    }
+
+</script>
+
+{% endblock %}

@@ -26,10 +26,11 @@
             <li class="list-group-item">{{ note.title }} </li>
           </h3>
           <li class="list-group-item">{{ note.data }} 
-            <h6 class="text-end">{{ note.date_now.day }}-{{ note.date_now.month }}-{{ note.date_now.year }} {{ note.date_now.hour }}:{{ note.date_now.minute }}
+            <h6 class="text-end">{{ note.date_now.day }}-{{ note.date_now.month }}-{{ note.date_now.year }} {{ note.date_now.hour }}:{{ note.date_now.minute }} 
             <h6 class="text-end">
-                <button type="button" class="btn btn-success">Edit</button>
+                <a href="{{ url_for('views.get_note', id=note.id)}}"><button type="button" class="btn btn-success"  >Edit</button></a>
                 <button type="button" class="btn btn-danger" onClick="deleteNote({{ note.id}})">Delete</button>
+                
             </h6>
           </h6>
         
@@ -38,6 +39,7 @@
         <br>
         <br>
         {% endfor %}
+        
     </div>
   </div>
 </div>

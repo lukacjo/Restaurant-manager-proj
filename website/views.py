@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Note, SearchForm
 from . import db
@@ -30,10 +30,6 @@ def notes():
             
     return render_template("notes.html", user=current_user)
 
-def date(d):
-     d =  datetime.strptime(d,"%y-%m-%d %H:%M")
-     d.strftime("%d-%m-%y %H:%M")
-     return d
 
 @views.route("/calc", methods=['POST', 'GET'])
 def calc():
@@ -55,6 +51,34 @@ def delete_note():
             db.session.commit()
     return jsonify({})
 
+@views.route('/edit_note/<int:id>', methods=['POST', 'GET'])
+@login_required
+def get_note(id):
+    old_note = Note.query.get_or_404(id)
+    if old_note:
+        if old_note.user_id == current_user.id:
+            old_title = old_note.title
+            old_data=old_note.data
+            old_date=old_note.date_now
+            if request.method == 'POST': 
+                title = request.form.get('title') 
+                note_text = request.form.get('note') 
+                title = title.capitalize()
+                if len(note_text) < 1:
+                    flash('Note is too short!', category='error') 
+                if len(title) < 1:
+                    flash('Title is too short!', category='error') 
+                else:
+                    db.session.delete(old_note) # usuwam starą notatkę
+                    new_note = Note(data=note_text, user_id=current_user.id, title=title, id=old_note.id, date_now=old_date)  # ustalam jakie dane ma mieć nowa notatka, zostawiając stare id
+                    db.session.add(new_note)  # dodaję nową notatkę
+                    db.session.commit()
+                    flash('Note edited!', category='success')
+                    return redirect(url_for('views.get_note', id=new_note.id))
+            
+            return render_template("edit_note.html", note=old_note, user=current_user, title=old_title, data=old_data)
+    
+    
 
 @views.context_processor
 def base():
