@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from .models import Note, SearchForm
 from . import db
 import json
+from datetime import datetime
 
 views = Blueprint("views", __name__)
 
@@ -16,7 +17,6 @@ def notes():
     if request.method == 'POST': 
         title = request.form.get('title') 
         note = request.form.get('note') # Bierze note i title z htmla
-
         title = title.capitalize()
         if len(note) < 1:
             flash('Note is too short!', category='error') 
@@ -29,6 +29,11 @@ def notes():
             flash('Note added!', category='success')
             
     return render_template("notes.html", user=current_user)
+
+def date(d):
+     d =  datetime.strptime(d,"%y-%m-%d %H:%M")
+     d.strftime("%d-%m-%y %H:%M")
+     return d
 
 @views.route("/calc", methods=['POST', 'GET'])
 def calc():

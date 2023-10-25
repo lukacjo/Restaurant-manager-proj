@@ -4,11 +4,12 @@ from sqlalchemy.sql import func
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from datetime import datetime
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(25))
     data = db.Column(db.String(9999))
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    date_now = db.Column(db.DateTime(timezone=True), default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class User(db.Model, UserMixin):

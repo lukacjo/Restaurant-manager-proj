@@ -25,11 +25,13 @@
           <h3 >
             <li class="list-group-item">{{ note.title }} </li>
           </h3>
-          <li class="list-group-item">{{ note.data }}
+          <li class="list-group-item">{{ note.data }} 
+            <h6 class="text-end">{{ note.date_now.day }}-{{ note.date_now.month }}-{{ note.date_now.year }} {{ note.date_now.hour }}:{{ note.date_now.minute }}
             <h6 class="text-end">
+                <button type="button" class="btn btn-success">Edit</button>
                 <button type="button" class="btn btn-danger" onClick="deleteNote({{ note.id}})">Delete</button>
             </h6>
-          </li>
+          </h6>
         
           
         </ul>
@@ -43,15 +45,15 @@
 
 
 
-    <script type="text/javascript">
-      function deleteNote(noteId) {
-  fetch("/delete-note", {
-    method: "POST",
-    body: JSON.stringify({ noteId: noteId }),
-  }).then((_res) => {
-    window.location.href = "/notes";
-  });
-  }
+<script type="text/javascript">
+    function deleteNote(noteId) {
+        fetch("/delete-note", {
+            method: "POST",
+            body: JSON.stringify({ noteId: noteId }),
+        }).then((_res) => {
+            window.location.href = "/notes";
+        });
+    }
 </script>
 
 {% endblock %}
