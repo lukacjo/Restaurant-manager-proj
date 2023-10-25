@@ -102,3 +102,6 @@ def search():
         else:
             return render_template("search.html", form=form, searched=searched,user=user, notes=notes)
         
+@views.route("/menu")
+def menu():
+    return render_template("menu.html", user=current_user)
