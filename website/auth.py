@@ -3,7 +3,7 @@ from .models import User, Note
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
-
+import time
 
 
 auth = Blueprint("auth", __name__)
@@ -34,10 +34,10 @@ def signup():
             new_user = User(email=email, firstname=firstname, lastname=lastname, password=generate_password_hash(password, method="sha256"))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
             
             flash('Account created', category="success")
-            return redirect(url_for('views.notes'))
+            
+            return redirect(url_for('auth.log_in'))
                
     return render_template("signup.html", user=current_user)
 
@@ -65,4 +65,5 @@ def log_in():
 @login_required
 def logout():
     logout_user()
+    flash('Account logged out', category="success")
     return redirect(url_for("auth.log_in"))

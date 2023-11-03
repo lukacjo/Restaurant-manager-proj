@@ -11,7 +11,9 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'eh2WGSwY@HwO$!S!j32EM*9$36zKJCyvrvu#fRVV3rgs$3@H&whPGXwknMyW#qypW%E#D8yhTPDq$m##Ho6wUkNdIeuWozI8dZM' # secret key jest tu widoczny bo jest to tylko do portfolio inaczej byłby ukryty ze względów bezpieczeństwa, moze jeszcze tym sie zajmę ale zobaczę 
     
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}' 
+    # app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}' #stare do bazy danych na sqlite
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:restaurantmanager@localhost/managerdatabase'  
+
     db.init_app(app)
    
     from .views import views
