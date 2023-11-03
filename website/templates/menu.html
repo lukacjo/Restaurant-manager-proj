@@ -3,51 +3,134 @@
 <title>Menu</title>
 {% endblock %}
 {% block content %}
-<h1> Menu </h1>
-<div class="btn-group">
-<div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Danie
-    </a>
-  
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Ilość
-    </a>
-  
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Dodatki
-    </a>
-  
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Rozmiar
-    </a>
-  
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
+<h1 class="text-center"> Menu </h1>
+
+<link rel="stylesheet" href="/static/css/my_forms.css" />
+
+
+<div class="my_menu_area">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/images/grander.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Grander</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        
+        <div class="card-body">
+          <div class="text-end">
+          <button type="button" class="btn btn-success">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/images/zinger.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Zinger</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        
+        <div class="card-body">
+          <div class="text-end">
+            <button type="button" class="btn btn-success">Add to cart</button>
+            </div>
+        </div>      
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/images/ramen.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Ramen Tantanmen</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        
+        <div class="card-body">
+          <div class="text-end">
+            <button type="button" class="btn btn-success">Add to cart</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/images/fries.webp" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Fries</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        
+        <div class="card-body">
+          <div class="text-end">
+            <button type="button" class="btn btn-success">Add to cart</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/images/mtndew.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Mountain Dew Baja Blast</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        
+        <div class="card-body">
+          <div class="text-end">
+            <button type="button" class="btn btn-success">Add to cart</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/images/fiji.webp" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Fiji Water</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        
+        <div class="card-body">
+          <div class="text-end">
+            <button type="button" class="btn btn-success">Add to cart</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/images/cola.webp" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Coca-Cola Quebec Maple</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        
+        <div class="card-body">
+          <div class="text-end">
+            <button type="button" class="btn btn-success">Add to cart</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="/static/images/root.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Root Beer</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        
+        <div class="card-body">
+          <div class="text-end">
+            <button type="button" class="btn btn-success">Add to cart</button>
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 {% endblock %}
