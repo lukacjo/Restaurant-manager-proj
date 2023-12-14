@@ -1,5 +1,4 @@
 # Restaurant_Manager
-#### Video Demo:  <https://youtu.be/eLvrD2_VhlA>
 #### Description:
 ## This project is built to help restaurants taking care of how many ingredients to order and to have notes in one place to not get distracted. 
 ## The app is based on Python Flask
