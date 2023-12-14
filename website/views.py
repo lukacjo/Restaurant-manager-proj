@@ -18,7 +18,7 @@ views = Blueprint("views", __name__) # uycie wcześniejszego blueprinta
 
 @views.route("/")
 def home():
-    return render_template("menu.html", user=current_user)
+    return render_template("home.html", user=current_user)
 
 # notatki
 @views.route("/notes", methods=['POST', 'GET']) 
@@ -151,6 +151,8 @@ def menu():
         prod = request.form.get('prod_name')  # Bierze qty i produkt z htmla
         if qty == None:
             flash('Quantity cant be empty', category='error')
+        if int(qty) < 1:
+            flash('Quantity cant be smaller than 1', category='error')
         else:
             new_ord = Prod(qty=qty, food=prod)  
             db.session.add(new_ord) # Dodawanie notatki do bazy danych
