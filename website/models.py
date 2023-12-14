@@ -23,3 +23,8 @@ class User(db.Model, UserMixin):
 class SearchForm(FlaskForm):
     searched = StringField("Searched", validators=[DataRequired()])
     submit = SubmitField("Submit")
+    
+class Prod(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    qty = db.Column(db.Integer)
+    food = db.Column(db.String(50))

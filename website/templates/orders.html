@@ -3,7 +3,44 @@
 <title>Orders</title>
 {% endblock %}
 {% block content %}
-<h1> Orders </h1>
+<h1 class="text-center"> How many to order </h1>
+
+{% for x in sum_of_prod %}
+<form method="POST">
+<input type="hidden" name="prod_name" value="{{ x }}" >
+&nbsp;Sum of {{x }}s to order: {{sum_of_prod[x]}} <button type="submit" class="btn btn-warning" >Product ordered/Not needed</button>
+<br>
+<br>
+</form>
+{% endfor %}
+<br>
 
 
+
+
+<div class="text-center">  
+  <ul class="list-group list-group-flush">
+    {% for product in prod %}
+    <li class="list-group-item">{{ product.qty }} {{ product.food }}  <button type="button" class="btn btn-danger" onClick="deleteOrder({{ product.id }})">Delete one order</button></li>
+    {% endfor %}
+  </ul>
+</div>
+
+
+        
+
+        
+        <script type="text/javascript">
+          function deleteOrder(prodId) {
+              fetch("/delete-order", {
+                  method: "POST",
+                  body: JSON.stringify({ prodId: prodId }),
+              }).then((_res) => {
+                  window.location.href = "/orders";
+              });
+          }
+
+          
+        </script>
 {% endblock %}
+

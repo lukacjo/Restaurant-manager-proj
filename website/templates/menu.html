@@ -3,134 +3,205 @@
 <title>Menu</title>
 {% endblock %}
 {% block content %}
-<h1 class="text-center"> Menu </h1>
+<div class="alert alert-danger" role="alert">
+  Sometimes there can be a problem with overload of the website. All you need to do is refresh the website. :)
+</div>
+<h1 class="text-center"> Select what we need to order </h1>
 
 <link rel="stylesheet" href="/static/css/my_forms.css" />
 
 
 <div class="my_menu_area">
   <div class="row row-cols-1 row-cols-md-4 g-4">
+    <form method="POST">
     <div class="col">
       <div class="card" style="width: 18rem;">
         <img src="/static/images/grander.png" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Grander</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 class="card-title" >Grander</h5>
+          <p class="card-text">Premium chicken sandwich.</p>
         </div>
         
         <div class="card-body">
           <div class="text-end">
-          <button type="button" class="btn btn-success">Add to cart</button>
+            <h6 class="card-text">Suppliers price: 20zł</h6>
+            <div class="input-group">
+              <input type="hidden" name="prod_name" value="Grander">
+              <input type="number" class="form-control" placeholder="Quantity" aria-label="qty" value="1" name="qty" >
+              <button type="submit" class="btn btn-success">Add to needed</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </form>
+
+  <form method="POST">
     <div class="col">
       <div class="card" style="width: 18rem;">
         <img src="/static/images/zinger.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Zinger</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          
+          <p class="card-text">Lower quality chicken sandwich.</p>
         </div>
         
         <div class="card-body">
           <div class="text-end">
-            <button type="button" class="btn btn-success">Add to cart</button>
+            <h6 class="card-text">Suppliers price: 15zł</h6>
+            <div class="input-group">
+              <input type="hidden" name="prod_name" value="Zinger">
+              <input type="number" class="form-control" placeholder="Quantity" name="qty" value="1">
+              <button type="submit" class="btn btn-success">Add to needed</button>
+            </div>
             </div>
         </div>      
       </div>
     </div>
+  </form>
+
+  <form method="POST">
     <div class="col">
       <div class="card" style="width: 18rem;">
         <img src="/static/images/ramen.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Ramen Tantanmen</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">The tastiest ramen.</p>
         </div>
         
         <div class="card-body">
           <div class="text-end">
-            <button type="button" class="btn btn-success">Add to cart</button>
+            <h6 class="card-text">Suppliers price: 40zł</h6>
+            <div class="input-group">
+              <input type="hidden" name="prod_name" value="Ramen Tantanmen">
+              <input type="number" class="form-control" placeholder="Quantity" name="qty" value="1">
+              <button type="submit" class="btn btn-success">Add to needed</button>
+            </div>
             </div>
         </div>
       </div>
     </div>
+  </form>
+
+  <form method="POST">
     <div class="col">
       <div class="card" style="width: 18rem;">
         <img src="/static/images/fries.webp" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Fries</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">McDonald's style fries.</p>
         </div>
         
         <div class="card-body">
           <div class="text-end">
-            <button type="button" class="btn btn-success">Add to cart</button>
+            <h6 class="card-text">Suppliers price: 10zł</h6>
+            <div class="input-group">
+              <input type="hidden" name="prod_name" value="Fries">
+              <input type="number" class="form-control" placeholder="Quantity" name="qty" value="1">
+              <button type="submit" class="btn btn-success">Add to needed</button>
+            </div>
             </div>
         </div>
       </div>
     </div>
+  </form>
+
+  <form method="POST">
     <div class="col">
       <div class="card" style="width: 18rem;">
         <img src="/static/images/mtndew.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Mountain Dew Baja Blast</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">The biggest abomination.</p>
         </div>
         
         <div class="card-body">
           <div class="text-end">
-            <button type="button" class="btn btn-success">Add to cart</button>
+            <h6 class="card-text">Suppliers price: 100zł</h6>
+            <div class="input-group">
+              <input type="hidden" name="prod_name" value="Mountain Dew Baja Blast">
+              <input type="number" class="form-control" placeholder="Quantity" name="qty" value="1">
+              <button type="submit" class="btn btn-success">Add to needed</button>
+            </div>
             </div>
         </div>
       </div>
     </div>
+  </form>
+
+  <form method="POST">
     <div class="col">
       <div class="card" style="width: 18rem;">
         <img src="/static/images/fiji.webp" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Fiji Water</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Terrible water, way too overpriced.</p>
         </div>
         
         <div class="card-body">
           <div class="text-end">
-            <button type="button" class="btn btn-success">Add to cart</button>
+            <h6 class="card-text">Suppliers price: 10zł</h6>
+            <div class="input-group">
+              <input type="hidden" name="prod_name" value="Fiji Water">
+              <input type="number" class="form-control" placeholder="Quantity" name="qty" value="1">
+              <button type="submit" class="btn btn-success">Add to needed</button>
+            </div>
             </div>
         </div>
       </div>
     </div>
+  </form>
+
+  <form method="POST">
     <div class="col">
       <div class="card" style="width: 18rem;">
         <img src="/static/images/cola.webp" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Coca-Cola Quebec Maple</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Actually great cola.</p>
         </div>
         
         <div class="card-body">
           <div class="text-end">
-            <button type="button" class="btn btn-success">Add to cart</button>
+            <h6 class="card-text">Suppliers price: 15zł</h6>
+            <div class="input-group">
+              <input type="hidden" name="prod_name" value="Coca-Cola Quebec Maple">
+              <input type="number" class="form-control" placeholder="Quantity" name="qty" value="1">
+              <button type="submit" class="btn btn-success">Add to needed</button>
+            </div>
             </div>
         </div>
       </div>
     </div>
+  </form>
+
+  <form method="POST">
     <div class="col">
       <div class="card" style="width: 18rem;">
         <img src="/static/images/root.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Root Beer</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Well I love it but I forgot the name of the other better root beer.</p>
         </div>
         
         <div class="card-body">
           <div class="text-end">
-            <button type="button" class="btn btn-success">Add to cart</button>
+            <h6 class="card-text">Suppliers price: 10zł</h6>
+            <div class="input-group">
+              <input type="hidden" name="prod_name" value="Root Beer">
+              <input type="number" class="form-control" placeholder="Quantity" name="qty" value="1">
+              <button type="submit" class="btn btn-success">Add to needed</button>
+            </div>
             </div>
         </div>
       </div>
     </div>
+  </form>
   </div>
+
+  
+
 </div>
+
 
 {% endblock %}
