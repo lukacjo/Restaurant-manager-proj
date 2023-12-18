@@ -16,7 +16,7 @@
             {% for note in notes %}
             <li class="list-group-item">{{ note.data }}
               <h6 class="text-end">
-                <button type="button" class="btn btn-success">Edit</button>
+                <a href="{{ url_for('views.get_note', id=note.id)}}"><button type="button" class="btn btn-success">Edit</button></a>
                 <button type="button" class="btn btn-danger" onClick="deleteNote({{ note.id}})">Delete</button>
             </h6>
         
