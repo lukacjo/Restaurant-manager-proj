@@ -6,13 +6,7 @@ import json
 from datetime import datetime
 import mysql.connector
 
-# connecuje się do bazy danych zeby usunąc wszystkie pojawienia się jednego produktu
-mydb = mysql.connector.connect(
-    host = "localhost",
-    user="root",
-    passwd = "restaurantmanager"
-    #,auth_plugin='mysql_native_password'
-)
+
 
 views = Blueprint("views", __name__) # uycie wcześniejszego blueprinta
 
@@ -51,12 +45,12 @@ def calc():
 def orders():
     if request.method == 'POST': 
         prod = request.form.get('prod_name')  # Bierze  produkt z htmla
-        mycursor = mydb.cursor() # ustawiam kursor
-        mycursor.execute("USE `managerdatabase`;") # w ten sposob zaczynam działac na konkretnej bazie danych
-            
-        sql = "DELETE FROM prod WHERE food = '%s';"  %prod # usuwam wszystkie pokazania sie danego rpoduktu przy uyciu skłądni sqla
-        mycursor.execute(sql) # executuje
-        mydb.commit()   
+        prod_to_delete = Prod.query.filter_by(food=prod).all()
+
+        for product in prod_to_delete:
+            db.session.delete(product)
+        db.session.commit()
+        
 
         flash('Product deleted!', category='success')
         return redirect("/orders")
